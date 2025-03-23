@@ -15,11 +15,13 @@ import Root from './routes/root.jsx'
 import Create from './routes/CreateRoute.jsx'
 
 const router = createBrowserRouter([
+  //Creating home path
   {
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
   },
+  //create a new chart path
   {
     path: "/Create",
     element: <Root />,

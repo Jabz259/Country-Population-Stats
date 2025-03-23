@@ -10,12 +10,26 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+import ErrorPage from './utils/error-page.jsx'
 import Root from './routes/root.jsx'
+import Create from './routes/CreateRoute.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/Create",
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "",
+        element: <Create />,
+      },
+    ],
   },
 ]);
 

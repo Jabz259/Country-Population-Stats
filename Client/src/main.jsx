@@ -23,7 +23,7 @@ const router = createBrowserRouter([
   },
   //create a new chart path
   {
-    path: "/Create",
+    path: "/create",
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [

@@ -11,6 +11,7 @@ function BasicExample() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
+            {/* Nav Link is what posts to the URL */}
             <Nav.Link href="viewcharts">My Charts</Nav.Link>
             <Nav.Link href="create">Create Chart</Nav.Link>
             {/* <NavDropdown title="More" id="basic-nav-dropdown">

@@ -10,8 +10,6 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 
 
-
-
 function FormExample() {
   const [validated, setValidated] = useState(false);
 
@@ -50,13 +48,19 @@ function FormExample() {
         </Form.Group>
       </Row>
 
+      <Form.Group as={Col} md="3" controlId="exampleForm.ControlTextarea1">
+        <Form.Label>Additional Information:</Form.Label>
+        <Form.Control as="textarea" rows={3} />
+      </Form.Group>
+
       <Row>
-      <Form.Group as={Col} md="6" controlId="validationCustom04">
+      <Form.Group as={Col} md="2" controlId="validationCustom04">
+        {/* Dropdown MENU component  */}
         <CountryDropdown direction={'end'}></CountryDropdown>
             <ListGroup as="ol" numbered>
-              <ListGroup.Item as="li">Cras justo odio</ListGroup.Item>
-              <ListGroup.Item as="li">Cras justo odio</ListGroup.Item>
-              <ListGroup.Item as="li">Cras justo odio</ListGroup.Item>
+              <ListGroup.Item as="li">Bangladesh</ListGroup.Item>
+              <ListGroup.Item as="li">Pakistan</ListGroup.Item>
+              <ListGroup.Item as="li">Sri Lanka</ListGroup.Item>
             </ListGroup>
       </Form.Group>
       </Row>

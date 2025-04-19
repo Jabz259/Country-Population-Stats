@@ -25,49 +25,66 @@ function FormExample() {
 
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
-      <Row className="mb-3">
-        <Form.Group as={Col} md="4" controlId="validationCustom01">
-          <Form.Label>Chart Name</Form.Label>
-          <Form.Control
-            required
-            type="text"
-            placeholder="e.g Population of Europe"
-            defaultValue=""
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-        </Form.Group>
+      
+      <Row className="m-4">
+        <Col>
+          <Form.Group className="m-1" as={Col} md="4" controlId="validationCustom01">
+            <Form.Label>Chart Name</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              placeholder="e.g Population of Europe"
+              defaultValue=""
+            />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          </Form.Group> 
+        </Col>
+          </Row>
+
+      <Row className="m-4">
+        <Col>
+          <Form.Group as={Col} md="4" controlId="validationCustom03">
+            <Form.Label>City (optional) </Form.Label>
+            <Form.Control type="text" placeholder="City" required />
+            <Form.Control.Feedback type="invalid">
+              Please provide a valid city.
+            </Form.Control.Feedback>
+          </Form.Group>
+        </Col>
       </Row>
 
-      <Row className="mb-3">
-        <Form.Group as={Col} md="6" controlId="validationCustom03">
-          <Form.Label>City (optional) </Form.Label>
-          <Form.Control type="text" placeholder="City" required />
-          <Form.Control.Feedback type="invalid">
-            Please provide a valid city.
-          </Form.Control.Feedback>
-        </Form.Group>
+      <Row className="m-4">
+        <Col>
+          <Form.Group as={Col} md="5" controlId="exampleForm.ControlTextarea1">
+            <Form.Label>Additional Information:</Form.Label>
+            <Form.Control as="textarea" rows={3} />
+          </Form.Group>
+        </Col>
       </Row>
 
-      <Form.Group as={Col} md="3" controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Additional Information:</Form.Label>
-        <Form.Control as="textarea" rows={3} />
-      </Form.Group>
+      <Row className="m-4">
+        <Col>
+          {/* Add Dropdown Menu here */}
+        </Col>
+      </Row>
 
-      <Row>
-      <Form.Group as={Col} md="2" controlId="validationCustom04">
-        {/* Dropdown MENU component  */}
-        <CountryDropdown direction={'end'}></CountryDropdown>
+      <Row className="m-4">
+        <Col>
+          <Form.Group as={Col} md="4" controlId="validationCustom04">
+            <strong>Country List</strong>
             <ListGroup as="ol" numbered>
-              <ListGroup.Item as="li">Bangladesh</ListGroup.Item>
               <ListGroup.Item as="li">Pakistan</ListGroup.Item>
               <ListGroup.Item as="li">Sri Lanka</ListGroup.Item>
             </ListGroup>
-      </Form.Group>
+          </Form.Group>
+        </Col>
       </Row>
 
-
-
-      <Button type="submit">Submit form</Button>
+      <Row className='m-4'>
+        <Col>
+          <Button size="lg" type="submit">Submit form</Button>
+        </Col>
+      </Row>
     </Form>
   );
 }

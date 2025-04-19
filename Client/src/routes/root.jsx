@@ -21,14 +21,7 @@ export default function Root() {
        </NavBar>
         <Outlet />
 
-       
-       <input type="submit" onClick={testRoute} />
-          
-            
-            
-          
-       
-
+      
         {/* other elements */}
       </div>
 

@@ -5,9 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 import router from './routes/reactrouter'
 
-import {
-  RouterProvider,
-} from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 
 
 createRoot(document.getElementById('root')).render(

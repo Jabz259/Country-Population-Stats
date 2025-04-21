@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 
 //add items as a listbox
 function Test() {
-  const countryArr = ["England", "Italy", "bangladesh","jamaica"];
+  const countryArr = ["England", "Italy", "bangladesh","jamaica", "bombclat", "its working woohoo!!","another one"];
   return countryArr;
 }
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -8,6 +8,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import CountryDropdown from './dropdown.jsx'
 import ListGroup from 'react-bootstrap/ListGroup';
 import { data } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 
 
@@ -15,7 +16,7 @@ import { data } from 'react-router-dom';
 // function Test() {
 //   const countryArr = ["England", "Japan", "Indonesia"];
 //   const listItems = countryArr.map(country => <ListGroup.Item as="li"> {country} </ListGroup.Item>);
- 
+
 // //   let listItems = [];
 // //  for (const i in countryArr) {
 // //requires a key
@@ -26,33 +27,62 @@ import { data } from 'react-router-dom';
 // }
 
 
+// function CountryList(props) {
+//   // props is the pool
+//   //in our pool of props we added a characteristic called CountryListData in the JSX component
+//   //and CountryListData we passed props.country from our FormsComponent
+//   let [countries, setCountries] = useState([])
+//   let listItems = props.CountryListData.map(country => <ListGroup.Item as="li"> {country} </ListGroup.Item>);
+//   setCountries = [listItems];
+
+//   useEffect(() => {
+
+
+//   })
+
+//   return ;
+// }
+
+
 
 function CountryList(props) {
-  // props is the pool
-  //in our pool of props we added a characteristic called CountryListData in the JSX component
-  //and CountryListData we passed props.country from our FormsComponent
-  const listItems = props.CountryListData.map(country => <ListGroup.Item as="li"> {country} </ListGroup.Item>);
-  return listItems;
+  const [countryName, setCountryName] = useState('');
+  
+  //Delacre state for the list of items
+    const [countries, setCountries] = useState([])
+      useEffect(() => {
+        //run side effect code, update the view when thre is a update to the array [props.CountryListData]
+        setCountries(props.CountryListData.map(country => <ListGroup.Item as="li"> {country} </ListGroup.Item>));
+        // Dependency array: only re-run effect when CountryListData changes
+        }, [props.CountryListData]);  
+
+  //return the list to render
+  return (
+    <>
+      {countries}
+    </>
+  )
+
 }
 
 
 function ChartNameField() {
-  return(
+  return (
     <Form.Group className="m-1" as={Col} md="4" controlId="validationCustom01">
-            <Form.Label>Chart Name</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              placeholder="e.g Population of Europe"
-              defaultValue=""
-            />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </Form.Group> 
+      <Form.Label>Chart Name</Form.Label>
+      <Form.Control
+        required
+        type="text"
+        placeholder="e.g Population of Europe"
+        defaultValue=""
+      />
+      <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+    </Form.Group>
   );
 }
 
-function CityNameField() {
-  return(<Form.Group as={Col} md="4" controlId="validationCustom03">
+function CityNameField(data) {
+  return (<Form.Group as={Col} md="4" controlId="validationCustom03">
     <Form.Label>City (optional) </Form.Label>
     <Form.Control type="text" placeholder="City" required />
     <Form.Control.Feedback type="invalid">
@@ -63,11 +93,11 @@ function CityNameField() {
 }
 
 function ChartMoreInfo() {
-  return(
-  <Form.Group as={Col} md="5" controlId="exampleForm.ControlTextarea1">
-    <Form.Label>Additional Information:</Form.Label>
-    <Form.Control as="textarea" rows={3} />
-  </Form.Group>);
+  return (
+    <Form.Group as={Col} md="5" controlId="exampleForm.ControlTextarea1">
+      <Form.Label>Additional Information:</Form.Label>
+      <Form.Control as="textarea" rows={3} />
+    </Form.Group>);
 }
 
 function FormComponents(props) {
@@ -91,15 +121,15 @@ function FormComponents(props) {
   //   // const listItems = <ListGroup.Item as="li"> {listBoxCountry.country} </ListGroup.Item>
   //   return listItems;
   // }
- 
+
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
-      
+
       <Row className="m-4">
         <Col>
-           <ChartNameField></ChartNameField>
+          <ChartNameField></ChartNameField>
         </Col>
-          </Row>
+      </Row>
 
       <Row className="m-4">
         <Col>
@@ -115,7 +145,7 @@ function FormComponents(props) {
 
       <Row className="m-4">
         <Col>
-          {/* Add Dropdown Menu here */}
+          <CountryDropdown></CountryDropdown>
         </Col>
       </Row>
 
@@ -124,9 +154,9 @@ function FormComponents(props) {
           <Form.Group as={Col} md="4" controlId="validationCustom04">
             <strong>Country List</strong>
             <ListGroup as="ol" numbered>
-                {/* passing one of the props to countryList function which will create our list box of countries */}
-                <CountryList CountryListData={props.country} />  
-                {/*  */}
+              {/* passing one of the props to countryList function which will create our list box of countries */}
+              <CountryList CountryListData={props.country} />
+              {/*  */}
             </ListGroup>
           </Form.Group>
         </Col>

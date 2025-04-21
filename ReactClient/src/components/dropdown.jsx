@@ -1,39 +1,63 @@
 import Dropdown from 'react-bootstrap/Dropdown';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 
-function AutoCloseExample({direction}) {
 
 
-    const CustomMenu = React.forwardRef(
-        ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
-          const [value, setValue] = useState('');
-      
-          return (
-            <div
-              ref={ref}
-              style={style}
-              className={className}
-              aria-labelledby={labeledBy}
-            >
-              <Form.Control
-                autoFocus
-                className="mx-3 my-2 w-auto"
-                placeholder="Type to filter..."
-                onChange={(e) => setValue(e.target.value)}
-                value={value}
-              />
-              <ul className="list-unstyled">
-                {React.Children.toArray(children).filter(
-                  (child) =>
-                    !value || child.props.children.toLowerCase().startsWith(value),
-                )}
-              </ul>
-            </div>
-          );
-        },
+
+
+function AutoCloseExample({ direction }) {
+
+
+  const CustomMenu = React.forwardRef(
+    ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
+      const [value, setValue] = useState('');
+
+      return (
+        <div
+          ref={ref}
+          style={style}
+          className={className}
+          aria-labelledby={labeledBy}
+        >
+          <Form.Control
+            autoFocus
+            className="mx-3 my-2 w-auto"
+            placeholder="Type to filter..."
+            onChange={(e) => setValue(e.target.value)}
+            value={value}
+          />
+          <ul className="list-unstyled">
+            {React.Children.toArray(children).filter(
+              (child) =>
+                !value || child.props.children.toLowerCase().startsWith(value),
+            )}
+          </ul>
+        </div>
       );
+    },
+  );
 
+  let id = 0;
+  const arr = [ "new"
+  ];
+
+  const DropdownMenu = (() => {
+
+    //create state to pass countries thorugh as an array
+    const [countryDropdown, setCountryDropdown] = useState([]);
+
+    //create useEffect hook to check state for any updates and remder dropdown item 
+    useEffect(() => {
+      setCountryDropdown(arr.map(element => <Dropdown.Item eventKey={id+=1}> {element} {id} </Dropdown.Item>))
+    }, [arr])
+
+    //return list to render component
+    return (
+      <>
+        {countryDropdown}
+      </>);
+  });
 
   return (
     <>
@@ -41,15 +65,10 @@ function AutoCloseExample({direction}) {
         <Dropdown.Toggle id="dropdown-autoclose-outside">
           Add Countries +
         </Dropdown.Toggle>
-
         <Dropdown.Menu as={CustomMenu}>
-      <Dropdown.Item eventKey="1">Red</Dropdown.Item>
-      <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
-      <Dropdown.Item eventKey="3" active>
-        Orange
-      </Dropdown.Item>
-      <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
-    </Dropdown.Menu>
+          {/* dropdownmenu component */}
+          <DropdownMenu></DropdownMenu>
+        </Dropdown.Menu>
 
       </Dropdown>
     </>

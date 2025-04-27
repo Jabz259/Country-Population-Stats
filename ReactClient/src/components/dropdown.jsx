@@ -49,7 +49,8 @@ function AutoCloseExample({ direction }) {
 
     //create useEffect hook to check state for any updates and remder dropdown item 
     useEffect(() => {
-      setCountryDropdown(arr.map(element => <Dropdown.Item eventKey={id+=1}> {element} {id} </Dropdown.Item>))
+      setCountryDropdown(arr.map(element => <Dropdown.Item eventKey={id++}> {element} {id} </Dropdown.Item>))
+      //id will show 2 although first element because we called it again
     }, [arr])
 
     //return list to render component

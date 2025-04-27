@@ -6,8 +6,9 @@
 </head>
 <body>
 
-<h1>hello there!</h1>
-<p> We finally decided to work?</p>
+<h1>Welcome username </h1>
+
+<p>Welcome to the admin center where you can view users and manage them.</p>
     
 </body>
 </html>

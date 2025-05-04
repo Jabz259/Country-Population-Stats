@@ -8,7 +8,11 @@
 
 <h1>Welcome username </h1>
 
-<p>Welcome to the admin center where you can view users and manage them.</p>
+<h3>All registered users</h3>
+    <ul>
+       <li>User 1</li>
+       <li>User 2</li>
+    </ul>
     
 </body>
 </html>

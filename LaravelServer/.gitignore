@@ -25,4 +25,8 @@ yarn-error.log
 .node_modules
 /vendor
 /storage
+/database
+/LaravelServer/database/seeders/DatabaseSeeder.php
+/LaravelServer/database/database.sqlite
+
 

@@ -8,11 +8,10 @@
 
 <h1>Welcome username </h1>
 
-<h3>All registered users</h3>
-    <ul>
-       <li>User 1</li>
-       <li>User 2</li>
-    </ul>
-    
+    <div>
+        <textarea name="basic_users" id="" cols="60" rows="30"></textarea>
+    </div>
+
+
 </body>
 </html>

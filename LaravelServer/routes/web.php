@@ -15,8 +15,11 @@ Route::get('/', [AdminController::class,'index']);
 Route::get('/test', [AdminController::class,'test']);
 
 //calling the register controller function and view
-Route::get('/ar', [RegisterController::class,'register']);
-Route::post('/ar', [RegisterController::class,'store']);
+Route::get('/admin/register', [RegisterController::class,'register']);
+Route::post('/admin/register', [RegisterController::class,'store']);
+
+Route::get('/admin/login', [RegisterController::class, 'login']);
+Route::post('/admin/login', [RegisterController::class, 'login']);
 
 //serving our react build via below route
 //not working yet

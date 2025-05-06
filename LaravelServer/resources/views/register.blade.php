@@ -10,7 +10,7 @@
 <h1> PLEASE REGISTER HERE FOR A ADMIN ACCOUNT</h1>
 
 <div>
-    <form action="/ar" method="POST">
+    <form action="/admin/register" method="POST">
 
         @csrf
 

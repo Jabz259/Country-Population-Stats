@@ -7,9 +7,10 @@
 <body>
 
     <h1>Log in with your admin account</h1>
-
-    <form action="" method="">
-    
+        
+    <form action="/admin/login" method="POST">
+        @csrf
+        
     <div>
         <label for="">Enter Username</label>
         <input type="text" name="login_username">

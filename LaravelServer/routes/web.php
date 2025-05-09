@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 
 //access blade admin center
 //This will be dead simple layout
@@ -18,8 +19,14 @@ Route::get('/test', [AdminController::class,'test']);
 Route::get('/admin/register', [RegisterController::class,'register']);
 Route::post('/admin/register', [RegisterController::class,'store']);
 
+
+//login routes
 Route::get('/admin/login', [RegisterController::class, 'login']);
-Route::post('/admin/login', [RegisterController::class, 'login']);
+Route::post('/admin/login', [RegisterController::class, 'authenticate']);
+
+//dashboard
+Route::get('/admin/dashboard', [DashboardController::class, 'dashboard']);
+
 
 //serving our react build via below route
 //not working yet

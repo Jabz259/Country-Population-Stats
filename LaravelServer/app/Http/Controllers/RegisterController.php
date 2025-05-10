@@ -10,6 +10,11 @@ class RegisterController extends Controller
 {
     //
 
+    public function logout(){
+        session() -> flush(); 
+        return redirect("/admin/login");
+    }
+
     public function login(Request $request)
     {
         return view("login");
@@ -19,7 +24,6 @@ class RegisterController extends Controller
 
         //This is usually the general logic for authenticated users from our database
         //I will need to check back to our blade file
-
         $username = $request->input("login_username");
         $password = $request->input("login_password");
 
@@ -33,14 +37,23 @@ class RegisterController extends Controller
         //if $admin is true (there is a record) return true and satisfy condition
         //if $admin returns nothing return false and doesnt satisfy the conditon
         if ($admin && Hash::check($password, $adminPassword)) {
+            //create a session
+            session(['user_id' => $admin->id]);
+
+            session()->put([
+                'id' => $admin->id,
+                'first_name' => $admin->first_name,
+                'last_name' => $admin->last_name,
+                'email' => $admin->email
+            ]);
+
+
             return redirect('/admin/dashboard');
         } else {
             return "login has failed, there was nothing found in the database";
         }
 
     }
-
-
 
     public function register()
     {

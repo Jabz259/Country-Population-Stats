@@ -7,7 +7,27 @@
 </head>
 <body>
 
-    <h1>Welcome to the admin dashboard</h1>
+<script>
+    const sometext = "hello";
+
+</script>
+
+    <h1>Welcome {{$firstName}} {{$lastName}} to the admin dashboard</h1>
     
+    <ul>
+    <label for=""> <strong> - Your Details - </strong></label>
+        <li>First name: {{$firstName}}</li>
+        <li>Last Name: {{$lastName}}</li>
+        <li>Associated Email: {{$email}}</li>
+        <li>Account ID: {{$userID}}</li>
+    </ul>
+
+        <form action="/admin/logout/user" method="POST">
+            @csrf
+            <input type="submit" value="Log Out">
+        </form>
+
+
+
 </body>
 </html>
